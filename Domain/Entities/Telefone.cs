@@ -12,5 +12,6 @@ namespace Domain.Entities
     {
         public required int CodigoArea { get; set; }
         public required string Numero { get; set; }
+        public required Cliente Cliente { get; set; }
     }
 }

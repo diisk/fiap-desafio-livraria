@@ -13,5 +13,7 @@ namespace Domain.Entities
         public required string Nome { get; set; }
         public required string Autor { get; set; }
         public required string Editora { get; set; }
+
+        public required Estoque Estoque { get; set; }
     }
 }
