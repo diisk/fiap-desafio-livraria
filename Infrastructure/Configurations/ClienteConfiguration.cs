@@ -1,11 +1,6 @@
 ﻿using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Infrastructure.Configurations
 {
@@ -20,7 +15,7 @@ namespace Infrastructure.Configurations
                 .WithOne(e => e.Cliente).HasPrincipalKey<Endereco>(e => e.ID);
 
             builder.HasMany(c => c.LivrosAlugados)
-                .WithMany();
+                .WithMany(l => l.ClientesAlugando);
         }
     }
 }

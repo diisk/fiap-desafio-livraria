@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Infrastructure.DbContexts
+﻿namespace Infrastructure.DbContexts
 {
     public class OnlyReadDbContextFactory : BaseDbContextFactory<OnlyReadDbContext> { }
 }

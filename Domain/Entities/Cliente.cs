@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Entities
 {
@@ -16,6 +11,6 @@ namespace Domain.Entities
         public required Endereco Endereco { get; set; }
         public required Telefone Telefone { get; set; }
 
-        public required ICollection<Livro> LivrosAlugados { get; set; } = new List<Livro>();
+        public virtual required ICollection<Livro> LivrosAlugados { get; set; } = new List<Livro>();
     }
 }

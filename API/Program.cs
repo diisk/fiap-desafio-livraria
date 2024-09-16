@@ -1,5 +1,6 @@
+using Domain.Interfaces;
 using Infrastructure.DbContexts;
-using Microsoft.EntityFrameworkCore;
+using Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,12 @@ builder.Services.AddDbContext<OnlyReadDbContext>(options =>
 {
     DbContextOptionsConfigurator.Configure(options, "API");
 }, ServiceLifetime.Scoped);
+
+builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
+builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+builder.Services.AddScoped<IEstoqueRepository, EstoqueRepository>();
+builder.Services.AddScoped<ILivroRepository, LivroRepository>();
+builder.Services.AddScoped<ITelefoneRepository, TelefoneRepository>();
 
 var app = builder.Build();
 

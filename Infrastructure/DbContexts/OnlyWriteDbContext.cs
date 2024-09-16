@@ -3,10 +3,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.DbContexts
 {
-    public class OnlyReadDbContext: DbContext
+    public class OnlyWriteDbContext: DbContext
     {
 
-        public OnlyReadDbContext(DbContextOptions options):base(options) {}
+        public OnlyWriteDbContext(DbContextOptions options):base(options) {}
         public DbSet<Cliente> clienteSet { get; set; }
         public DbSet<Estoque> estoqueSet { get; set; }
         public DbSet<Livro> livroSet { get; set; }
