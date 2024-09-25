@@ -12,8 +12,8 @@ namespace Domain.Entities
         [RegularExpression(@"^\d{11}$", ErrorMessage = "O cpf deve conter 11 digitos.")]
         public required string Cpf { get; set; }
 
-        public required Endereco Endereco { get; set; }
-        public required Telefone Telefone { get; set; }
+        public virtual required Endereco Endereco { get; set; }
+        public virtual required Telefone Telefone { get; set; }
 
         public virtual required ICollection<Livro> LivrosAlugados { get; set; } = new List<Livro>();
     }

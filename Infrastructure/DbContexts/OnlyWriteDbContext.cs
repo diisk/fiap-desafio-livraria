@@ -6,7 +6,8 @@ namespace Infrastructure.DbContexts
     public class OnlyWriteDbContext: DbContext
     {
 
-        public OnlyWriteDbContext(DbContextOptions options):base(options) {}
+        public OnlyWriteDbContext(DbContextOptions<OnlyWriteDbContext> options):base(options) {}
+        public DbSet<Usuario> usuarioSet { get; set; }
         public DbSet<Cliente> clienteSet { get; set; }
         public DbSet<Estoque> estoqueSet { get; set; }
         public DbSet<Livro> livroSet { get; set; }

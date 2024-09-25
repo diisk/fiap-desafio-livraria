@@ -7,6 +7,6 @@ namespace Domain.Entities
     {
         public required int Quantidade { get; set; }
 
-        public required Livro Livro { get; set; }
+        public virtual required Livro Livro { get; set; }
     }
 }

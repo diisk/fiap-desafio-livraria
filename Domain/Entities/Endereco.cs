@@ -11,6 +11,6 @@ namespace Domain.Entities
         public string? Complemento { get; set; }
         public required int Numero { get; set; }
 
-        public required Cliente Cliente { get; set; }
+        public virtual required Cliente Cliente { get; set; }
     }
 }

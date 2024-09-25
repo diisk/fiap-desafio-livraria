@@ -8,7 +8,7 @@ namespace Domain.Entities
     {
         [EmailAddress]
         public required string Email { get; set; }
-        public required string SenhaCriptografada { get; set; }
+        public required string SenhaHasheada { get; set; }
 
     }
 }

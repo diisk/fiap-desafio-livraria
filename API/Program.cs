@@ -27,6 +27,7 @@ builder.Services.AddDbContext<OnlyWriteDbContext>(options =>
     DbContextOptionsConfigurator.Configure(options, "API");
 }, ServiceLifetime.Scoped);
 
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IClienteRepository, ClienteRepository>();
 builder.Services.AddScoped<IEnderecoRepository, EnderecoRepository>();
 builder.Services.AddScoped<IEstoqueRepository, EstoqueRepository>();
@@ -34,8 +35,9 @@ builder.Services.AddScoped<ILivroRepository, LivroRepository>();
 builder.Services.AddScoped<ITelefoneRepository, TelefoneRepository>();
 
 
-builder.Services.AddSingleton<ITokenService, TokenService>();
-builder.Services.AddSingleton<ICryptoService, CryptoService>();
+builder.Services.AddScoped<ITokenService, TokenService>();
+builder.Services.AddScoped<ICryptoService, CryptoService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var configuration = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
 
@@ -61,7 +63,6 @@ builder.Services.AddAuthentication(x =>
     });
 
 builder.Services.AddSwaggerGen(x => {
-    x.SwaggerDoc("V1.0",new OpenApiInfo { Title = "Fiap Desafio"});
     x.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Name = "Authorization",
@@ -97,6 +98,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();

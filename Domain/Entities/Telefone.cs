@@ -8,6 +8,6 @@ namespace Domain.Entities
     {
         [RegularExpression(@"^\d{10,11}$", ErrorMessage = "O número deve conter entre 10 e 11 digitos.")]
         public required string Numero { get; set; }
-        public required Cliente Cliente { get; set; }
+        public virtual required Cliente Cliente { get; set; }
     }
 }

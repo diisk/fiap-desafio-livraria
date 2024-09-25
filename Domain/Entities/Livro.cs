@@ -9,7 +9,7 @@ namespace Domain.Entities
         public required string Autor { get; set; }
         public required string Editora { get; set; }
 
-        public required Estoque Estoque { get; set; }
-        public required ICollection<Cliente> ClientesAlugando { get; set; } = new List<Cliente>();
+        public virtual required Estoque Estoque { get; set; }
+        public virtual required ICollection<Cliente> ClientesAlugando { get; set; } = new List<Cliente>();
     }
 }

@@ -6,7 +6,8 @@ namespace Infrastructure.DbContexts
     public class OnlyReadDbContext: DbContext
     {
 
-        public OnlyReadDbContext(DbContextOptions options):base(options) {}
+        public OnlyReadDbContext(DbContextOptions<OnlyReadDbContext> options):base(options) {}
+        public DbSet<Usuario> usuarioSet { get; set; }
         public DbSet<Cliente> clienteSet { get; set; }
         public DbSet<Estoque> estoqueSet { get; set; }
         public DbSet<Livro> livroSet { get; set; }
