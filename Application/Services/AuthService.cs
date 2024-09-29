@@ -40,7 +40,11 @@ namespace Application.Services
 
             var senhaHasheada = cryptoService.HashearSenha(senha);
 
-            return usuarioRepository.Save(new Usuario { Email = email, SenhaHasheada = senhaHasheada });
+            var usuario = new Usuario { Email = email, SenhaHasheada = senhaHasheada };
+
+            usuario.Validate();
+
+            return usuarioRepository.Save(usuario);
 
         }
     }

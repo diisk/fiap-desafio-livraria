@@ -7,14 +7,23 @@ namespace Domain.Entities
     public class Cliente : EntityBase
     {
 
+        [Required(ErrorMessage = "Nome completo obrigatório")]
         public required string NomeCompleto { get; set; }
 
-        [RegularExpression(@"^\d{11}$", ErrorMessage = "O cpf deve conter 11 digitos.")]
+        [RegularExpression(@"^\d{11}$", ErrorMessage = "O cpf deve conter 11 digitos")]
+        [Required(ErrorMessage = "Cpf obrigatório")]
         public required string Cpf { get; set; }
 
         public virtual required Endereco Endereco { get; set; }
         public virtual required Telefone Telefone { get; set; }
 
-        public virtual required ICollection<Livro> LivrosAlugados { get; set; } = new List<Livro>();
+        public virtual ICollection<Livro> LivrosAlugados { get; set; } = new List<Livro>();
+
+        public override void Validate()
+        {
+            base.Validate();
+            Endereco.Validate();
+            Telefone.Validate();
+        }
     }
 }

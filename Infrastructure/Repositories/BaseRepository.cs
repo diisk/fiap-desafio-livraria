@@ -40,7 +40,7 @@ namespace Infrastructure.Repositories
         }
 
         public ICollection<T> FindAll()
-            => onlyReadDbSet.ToList();
+            => onlyReadDbSet.Where(entity=>!entity.Deleted).ToList();
 
 
         public T? FindById(int id)

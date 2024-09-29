@@ -1,6 +1,8 @@
-﻿using Domain.Interfaces;
+﻿using Application.DTOs;
+using Application.Interfaces;
+using AutoMapper;
+using Domain.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -11,25 +13,31 @@ namespace API.Controllers
     {
 
         private readonly IAuthService authService;
+        private readonly IMapper mapper;
+        private readonly IResponseService responseService;
 
-        public UsuarioController(IAuthService authService)
+        public UsuarioController(IAuthService authService, IMapper mapper, IResponseService responseService)
         {
             this.authService = authService;
+            this.mapper = mapper;
+            this.responseService = responseService;
         }
 
         [HttpPost("logar")]
         [AllowAnonymous]
-        public string login([FromBody] LogarRequest request)
+        public ActionResult<BaseResponse<string>> login([FromBody] LogarRequest request)
+
         {
-            return authService.logar(request.Email,request.Senha);
+            var token = authService.logar(request.Email, request.Senha);
+            return responseService.Ok(token);
         }
 
         [HttpPost("registrar")]
         [AllowAnonymous]
-        public string registrar([FromBody] RegistrarRequest request)
+        public ActionResult<BaseResponse<string>> registrar([FromBody] RegistrarRequest request)
         {
-            authService.registrar(request.Email, request.Senha);
-            return "teste";
+            authService.registrar(request.Email,request.Senha);
+            return responseService.NoContent<string>();
         }
     }
 }
