@@ -10,5 +10,9 @@ namespace Domain.Interfaces.ClienteContracts
     public interface IClienteService
     {
         public Cliente CadastrarCliente(Cliente cliente);
+        public Cliente BuscarCliente(int id);
+        public List<Cliente> ListarClientes();
+        public void DeletarCliente(int id);
+        public Cliente AtualizarCliente(Cliente cliente);
     }
 }

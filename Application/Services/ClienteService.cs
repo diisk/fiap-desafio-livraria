@@ -17,6 +17,21 @@ namespace Application.Services
             this.clienteRepository = clienteRepository;
         }
 
+        public Cliente AtualizarCliente(Cliente cliente)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Cliente BuscarCliente(int id)
+        {
+            Cliente? cliente = clienteRepository.FindById(id);
+
+            if (cliente == null)
+                throw new Exception("Cliente não encontrado");
+
+            return cliente;
+        }
+
         public Cliente CadastrarCliente(Cliente cliente)
         {
             cliente.Validate();
@@ -25,6 +40,16 @@ namespace Application.Services
                 throw new Exception("Já existe um cliente com esse cpf!");
 
             return clienteRepository.Save(cliente);
+        }
+
+        public void DeletarCliente(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Cliente> ListarClientes()
+        {
+            return clienteRepository.FindAll().ToList();
         }
     }
 }
